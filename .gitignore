@@ -1,0 +1,23 @@
+# Exclude exported CurseForge zip files
+*.zip
+
+# Exclude exported Modrinth modpacks
+*.mrpack
+
+/crash-reports
+/local
+/logs
+/modernfix
+/saves
+/screenshot
+/server-resource-packs
+/texturepacks
+/shaderpacks
+/backups
+/coremods
+/build
+/.vscode
+/usercache.json
+/usernamecache.json
+/options.txt
+/rhino.local.properties

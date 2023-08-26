@@ -1,0 +1,13 @@
+name = "template-pack"
+author = "pen787"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "ae7b9b6e82d59d462ce3d3de2d6e94e58675c2d6160a79f3a6b8c305efa2d279"
+
+[versions]
+fabric = "0.14.22"
+minecraft = "1.19.2"
