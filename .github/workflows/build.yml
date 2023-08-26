@@ -8,19 +8,21 @@ on:
 
 jobs:
   pre-release:
-    name: "Pre Release"
+    name: "Release"
     runs-on: "ubuntu-latest"
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
       - name: Setup Go environment
         uses: actions/setup-go@v4.1.0
-        
+      - name: Print working directory contents
+        run: ls -R
       - name: Declare some variables
         id: vars
         shell: bash
         run: |
           echo "::set-output name=sha_short::$(git rev-parse --short $GITHUB_SHA)"
-          ls
       - name: Install packwiz
         run: |
           go install github.com/packwiz/packwiz@latest
@@ -33,7 +35,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "pre-release-latest"
+          automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
           files: |
