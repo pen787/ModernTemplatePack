@@ -1,0 +1,40 @@
+---
+name: "pre-release"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  pre-release:
+    name: "Pre Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: Setup Go environment
+        uses: actions/setup-go@v4.1.0
+        
+      - name: Declare some variables
+        id: vars
+        shell: bash
+        run: |
+          echo "::set-output name=sha_short::$(git rev-parse --short $GITHUB_SHA)"
+      - name: Install packwiz
+        run: |
+          go install github.com/packwiz/packwiz@latest
+      - name: Export Modpack format CurseForge
+        run: |
+          packwiz refresh
+          packwiz curseforge export -o client.zip -s client
+          packwiz curseforge export -o server.zip -s server
+    
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "pre-release-latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            client.zip
+            server.zip
