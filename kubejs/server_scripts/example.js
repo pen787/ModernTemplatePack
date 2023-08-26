@@ -4,3 +4,4 @@
 
 console.info('Hello, World! (Loaded server scripts)')
 
+console.info("sussy baka")
