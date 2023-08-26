@@ -2,4 +2,4 @@
 
 This is for setup a new modpack.
 
-How to use
+[Packwiz Documentation](https://packwiz.infra.link)
